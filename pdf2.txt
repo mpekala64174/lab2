@@ -1,0 +1,124 @@
+//zadanie 1
+
+public class Main
+{
+	public static void main(String[] args) {
+	    
+		Czlowiek ob1 = new Czlowiek(21,75,177,"Marcel",true);
+		System.out.println(ob1.getWiek());
+		System.out.println(ob1.getWaga());
+		System.out.println(ob1.getWzrost());
+		System.out.println(ob1.getImie());
+		System.out.println(ob1.getIsMale());
+	}
+}
+
+class Czlowiek{
+    int wiek;
+    double waga, wzrost;
+    String imie;
+    boolean isMale;
+    
+    //metody
+    public Czlowiek(int wiek, double waga, double wzrost, String imie, boolean isMale){ //konstruktor z parametrami
+        this.wiek=wiek;
+        this.waga=waga;
+        this.wzrost=wzrost;
+        this.imie=imie;
+        this.isMale=isMale;
+    }
+    
+    public int getWiek(){
+        return wiek;
+    }
+    public double getWaga(){
+        return waga;
+    }
+    public double getWzrost(){
+        return wzrost;
+    }
+    public String getImie(){
+        return imie;
+    }
+    public boolean getIsMale(){
+        return isMale;
+    }
+}
+
+//zadanie 2
+
+public class Main
+{
+	public static void main(String[] args) {
+	   Prostokat pr1 = new Prostokat(13.0,12.0);
+	    if(pr1.dlugosc>0 && pr1.szerokosc>0){
+	        System.out.println(pr1.liczPole());
+	        System.out.println(pr1.liczObwod());
+	        System.out.println(pr1.liczPrzekatna());
+	    }else{
+	        System.out.println("Blad danych");
+	    }
+	}
+}
+
+class Prostokat{
+   double dlugosc, szerokosc;
+   
+   public Prostokat(double dlugosc, double szerokosc){
+       this.dlugosc=dlugosc;
+       this.szerokosc=szerokosc;
+   }
+   public double liczPole(){
+       return dlugosc*szerokosc;
+   }
+   public double liczObwod(){
+       return 2*dlugosc+2*szerokosc;
+   }
+   public double liczPrzekatna(){
+       return Math.sqrt(dlugosc*dlugosc+szerokosc*szerokosc);
+   }
+}
+
+//zadanie 3
+
+public class Main
+{
+  public static void main (String[]args){
+        MyNumber nr = new MyNumber(4);
+        MyNumber nr1 = new MyNumber(2);
+        System.out.println("liczba nieparzysta "+nr.isOdd());
+        System.out.println("liczba parzysta "+nr.isEven());
+        System.out.println("pierw "+nr.sqrt());
+        System.out.println("potega "+nr.pow(nr1));
+        System.out.println("suma "+nr.add(nr1));
+         System.out.println("roznica "+nr.substract(nr1));
+    }
+}
+
+class MyNumber
+{
+ double a;
+ 
+ public MyNumber(double a){
+     this.a=a;
+ }
+ public boolean isEven(){
+    return a%2==0;
+ }
+ public boolean isOdd(){
+    return !isEven(); //wywolanie metody zdefiniowanej gdzie indziej
+ }
+ public double sqrt(){
+     return Math.sqrt(a);
+ }
+ public MyNumber pow(MyNumber pow){
+     return new MyNumber(Math.pow(a,pow.a)); 
+     //stworzenie obiektu odwolujacego sie do klasy
+ }
+ public MyNumber add(MyNumber wartosc){
+     return new MyNumber(a+wartosc.a);
+ }
+ public MyNumber substract(MyNumber wartosc){
+     return new MyNumber(a-wartosc.a);
+ }
+}
